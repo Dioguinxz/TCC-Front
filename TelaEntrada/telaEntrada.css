@@ -29,7 +29,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 8vh;
     width: 100%;
     background-color: #8D9EFF;
 }
@@ -42,13 +42,12 @@ header {
     height: 43px;
     margin-top: 2px;
     margin-left: 100px;
-    transition: filter 0.3s ease-in-out; 
+    transition: filter 0.3s ease-in-out;
 }
 
 .logo:hover .img-logo {
     filter: brightness(0) saturate(100%) invert(9%) sepia(0%) saturate(0%) hue-rotate(359deg) brightness(100%) contrast(102%);
 }
-
 
 .botoes-header {
     display: flex;
@@ -78,14 +77,13 @@ header {
     font-weight: lighter;
     cursor: pointer;
     transition: transform 0.3s, color 0.3s, background-color 0.3s;
-   
 }
 
 .btn-login:hover,
 .btn-signUp:hover {
     transform: scale(1.02);
     background-color: #333333;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 
 .btn-login:hover a,
@@ -93,14 +91,13 @@ header {
     color: #FFFFFF;
 }
 
-
 .slogan {
-    font-size: 40px;
+    font-size: 2.5vw;
     text-align: center;
     color: #8D9EFF;
     font-weight: 900;
     position: absolute;
-    top: 80px;
+    top: 12vh;
     letter-spacing: -1.5px;
 }
 
@@ -109,9 +106,9 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 160px;
-    width: 800px;
-    height: 400px;
+    margin-top: 12vh;
+    width: 60vw;
+    height: 50vh;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
     border-radius: 0px 0px 25px 25px;
@@ -120,7 +117,7 @@ header {
 
 .barra {
     width: 100%;
-    height: 50px;
+    height: 7vh;
     background-color: #8D9EFF;
     position: absolute;
     top: 0;
@@ -140,27 +137,30 @@ header {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 250px;
-    height: 70px;
+    width: 20vw;
+    height: 10vh;
     background-color: #8D9EFF;
     color: #fff;
     font-family: 'Codec';
-    font-size: 24px;
+    font-size: 2vw;
     border-radius: 25px;
     position: relative;
     z-index: 1;
-    margin-top: 60px;
-    transition: 1s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
-    transition: transform 0.3s;
+    margin-top: 5vh;
     transition: 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+    cursor: pointer;
 }
+
+a {
+    text-decoration: none;
+}
+
+
 
 .btn-comecar:hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 20px;
-    cursor: pointer;
     background-color: #333333;
-    transition: 0.3s ease-in-out;
     transform: scale(1.1);
 }
 
@@ -168,7 +168,59 @@ header {
     width: 27px;
 }
 
-.btn-comecar a {
-    color: white;
-    text-decoration: none;
+@media (min-width: 1600px) {
+    .container {
+        width: 50vw;
+        height: 45vh;
+    }
+
+    .btn-comecar {
+        width: 18vw;
+        height: 9vh;
+        font-size: 1.8vw;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        width: 45vw;
+        height: 40vh;
+    }
+
+    .slogan {
+        font-size: 2.2vw;
+        top: 14vh;
+    }
+
+    .btn-comecar {
+        width: 17vw;
+        height: 9vh;
+        font-size: 1.6vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 70vw;
+        height: 55vh;
+    }
+
+    .btn-comecar {
+        width: 25vw;
+        height: 12vh;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 1366px) {
+    .img-logo {
+        height: 35px;
+        margin-left: 50px;
+    }
+
+    .btn-login,
+    .btn-signUp {
+        width: 100px;
+        font-size: 13px;
+    }
 }

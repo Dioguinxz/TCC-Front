@@ -120,6 +120,7 @@ header {
     bottom: 10px;
 }
 
+
 form {
     display: flex;
     flex-direction: column; /* Centraliza os elementos dentro do formulário */

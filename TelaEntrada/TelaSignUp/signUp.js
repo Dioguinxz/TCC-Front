@@ -21,7 +21,7 @@ class UsuarioService {
             } else if (response.status === 409) {
                 alert('Este email já está registrado.');
             } else {
-                alert('Erro ao criar conta.');
+                alert('Email já está registrado.');
             }
         } catch (error) {
             console.error('Erro:', error);
@@ -37,7 +37,7 @@ function criarContaHandler() {
     const senha = document.getElementById('password').value;
 
     if (!nome || !email || !senha) {
-        alert('Por favor, preencha todos os campos.');
+        alert('Preencha todos os campos.');
         return;
     }
 

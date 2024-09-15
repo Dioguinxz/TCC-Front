@@ -15,7 +15,7 @@ class UsuarioService {
 
             if (response.ok) {
                 alert('Conta criada com sucesso!');
-                window.location.href = '/TelaEntrada/TelaLogin/login.html';
+                window.location.href = '/TelaEntrada/TelaTarefas/tarefas.html'; // Redireciona para a tela de tarefas
             } else if (response.status === 409) {
                 alert('Este email já está registrado.');
             } else {
@@ -32,6 +32,11 @@ function criarContaHandler() {
     const nome = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('password').value;
+
+    if (!nome || !email || !senha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
 
     const usuarioService = new UsuarioService('http://localhost:8080');
     usuarioService.criarConta(nome, email, senha);

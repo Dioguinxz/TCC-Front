@@ -120,12 +120,10 @@ header {
 
 form {
     width: 400px;
-    /* border: 1px solid black; */
     position: relative;
     bottom: 30px;
-
+    text-align: center; /* Centraliza o conteúdo dentro do form */
 }
-
 .input-single {
     /* border: 1px solid black; */
     width: 100%;
@@ -170,8 +168,8 @@ form {
     color: #333333;
 }
 
-.forgot-password {
-    /* border: 1px solid; */
+/* .forgot-password {
+     border: 1px solid; 
     position: relative;
     left:151px;
     bottom: 42px;
@@ -185,7 +183,7 @@ form {
     color: #333333;
     transition: 0.2s ease-in-out;
 
-}
+} */
 
 .right-container button {
     font-family: 'Codec';
@@ -193,13 +191,14 @@ form {
     width: 180px;
     height: 35px;
     border-radius: 25px;
-    border: 2px solid #8D9EFF;
-    color: #8D9EFF;
-    background-color: transparent;
+    border: none;
+    color: white;
+    background-color: #8D9EFF;
     transition: 0.2s ease-in-out;
+    margin: 0 auto; 
+    display: block; 
     position: relative;
-    bottom: 26px;
-
+    bottom: -18px;
 }
 
 .right-container button:hover{

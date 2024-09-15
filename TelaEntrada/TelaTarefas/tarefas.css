@@ -75,7 +75,6 @@ header {
 }
 
 .sidebar {
-
     position: fixed;
     top: 50px;
     left: 0;
@@ -87,7 +86,6 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
-    
 
 }
 
@@ -101,11 +99,23 @@ header {
     gap: 15px;
     color: white;
     
-
-    
 }
 
 .tasks svg {
     width: 20px;
     fill: white;
+}
+
+.container{
+    height: 500px;
+    width: 1200px;
+    border: 1px solid black;
+}
+
+.boasVindas{
+    border: 1px solid black;
+    font-size: 40px;
+    position: absolute;
+
+
 }

@@ -16,6 +16,7 @@ class UsuarioService {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('nomeUsuario', data.nome); // Armazena o nome do usuário
                 window.location.href = '/TelaEntrada/TelaTarefas/tarefas.html';
             } else {
                 alert('Email ou senha incorretos.');

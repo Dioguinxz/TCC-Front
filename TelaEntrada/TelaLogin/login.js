@@ -5,14 +5,14 @@ class UsuarioService {
 
     async login(email, senha) {
         const usuario = { email, senha };
-
+    
         try {
             const response = await fetch(`${this.baseUrl}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuario)
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
@@ -26,6 +26,7 @@ class UsuarioService {
             alert('Erro de conexão.');
         }
     }
+    
 }
 
 function loginHandler() {

@@ -10,43 +10,41 @@
 
 <body>
 
-    <div class="tela-container">
+    <header>
+        <a href="/TelaEntrada/telaEntrada.html">
+            <span class="logo">
+                <img class="img-logo" src="/TelaEntrada/images/LOGO-SIMPLE (2).png" alt="logo">
+            </span>
+        </a>
+    </header>
 
+    <div class="tela-container">
         <div class="left-container">
             <h3>Welcome</h3>
             <img src="images/LOGO_V2.png" alt="LOGO_V2">
-            <button class="btn-create_account">Create Account</button>
+            <a href="/TelaEntrada/TelaSignUp/signUp.html">
+                <button class="btn-create_account">Create Account</button>
+            </a>
         </div>
 
         <div class="right-container">
             <h3>Login</h3>
-
-            <form action="">
+            <form id="loginForm">
                 <div class="input-single">
                     <input required type="email" name="email" id="email" class="input" placeholder=" ">
-
                     <label for="email">Email</label>
                 </div>
-
                 <div class="input-single">
                     <input required type="password" name="password" id="password" class="input" placeholder=" ">
                     <label for="password">Senha</label>
                 </div>
+                <button type="button" onclick="loginHandler()">Login</button>
             </form>
-
             <div class="forgot-password">Forgot Password?</div>
-           
-            <div class="btn-login">
-                <button>Login</button>
-            </div>
-
         </div>
-
     </div>
 
-
-    </div>
-
+    <script src="/TelaEntrada/TelaLogin/login.js"></script>
 </body>
 
 </html>

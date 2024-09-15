@@ -4,24 +4,18 @@ class UsuarioService {
     }
 
     async criarConta(nome, email, senha) {
-        const usuario = {
-            nome: nome,
-            email: email,
-            senha: senha
-        };
+        const usuario = { nome, email, senha };
 
         try {
             const response = await fetch(`${this.baseUrl}/auth/register`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuario)
             });
 
             if (response.ok) {
                 alert('Conta criada com sucesso!');
-                window.location.href = '../TelaLogin/login.html'; 
+                window.location.href = '/TelaEntrada/TelaLogin/login.html';
             } else if (response.status === 409) {
                 alert('Este email já está registrado.');
             } else {

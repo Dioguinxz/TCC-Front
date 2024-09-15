@@ -19,6 +19,34 @@ body {
     background-color: #f8f9fd;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+    width: 100%;
+    background-color: #8D9EFF;
+}
+
+.logo {
+    margin-left: 60px;
+}
+
+.img-logo {
+    height: 43px;
+    margin-top: 2px;
+    margin-left: 100px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.logo:hover .img-logo {
+    filter: brightness(0) saturate(100%) invert(9%) sepia(0%) saturate(0%) hue-rotate(359deg) brightness(100%) contrast(102%);
+}
+
 .tela-container {
     font-family: 'Codec';
     display: flex;

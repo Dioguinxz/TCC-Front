@@ -10,46 +10,41 @@
 
 <body>
 
+    <header>
+        <span class="logo">
+            <img class="img-logo" src="/TelaEntrada/images/LOGO-SIMPLE (2).png" alt="logo">
+        </span>
+    </header>
+    
     <div class="tela-container">
         <div class="left-container">
             <h3>Welcome</h3>
             <img src="images/LOGO_V2.png" alt="LOGO_V2">
-            <button class="btn-login">
-                <a href="../TelaLogin/login.html">Login</button>
+            <a href="/TelaEntrada/TelaLogin/login.html">
+                <button class="btn-login">Login</button>
             </a>
         </div>
 
-
         <div class="right-container">
             <h3>Create Account</h3>
-            <form action="">
+            <form id="signUpForm">
                 <div class="input-single">
-                    <input required type="name" name="name" id="name" class="input" placeholder=" ">
-
+                    <input required type="text" name="name" id="name" class="input" placeholder=" ">
                     <label for="name">Nome</label>
                 </div>
-
                 <div class="input-single">
                     <input required type="email" name="email" id="email" class="input" placeholder=" ">
-
                     <label for="email">Email</label>
                 </div>
-
-
                 <div class="input-single">
                     <input required type="password" name="password" id="password" class="input" placeholder=" ">
                     <label for="password">Senha</label>
                 </div>
-            </form>
-
-            <div class="btn-signUp">
                 <button type="button" onclick="criarContaHandler()">Sign Up</button>
-            </div>
-
+            </form>
         </div>
-
     </div>
-    <script src="/TelaEntrada/scripts/signUp.js"></script>
+    <script src="/TelaEntrada/TelaSignUp/signUp.js"></script>
 </body>
 
 </html>

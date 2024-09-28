@@ -1,12 +1,9 @@
-function logoutHandler() {
-    // Remove o token e o nome do usuário do localStorage
-    localStorage.removeItem('token');
-    localStorage.removeItem('nomeUsuario');
-    localStorage.removeItem('emailUsuario'); // Remover o email do usuário
 
-    // Redireciona o usuário para a página de entrada (login)
-    window.location.href = '/TelaEntrada/telaEntrada.html';
+function inicializar() {
+    verificarAutenticacao(); // Verifica se o usuário está autenticado
+    atualizarBoasVindas();
 }
+
 
 // Função para atualizar a mensagem de boas-vindas
 function atualizarBoasVindas() {
@@ -18,15 +15,23 @@ function atualizarBoasVindas() {
 function verificarAutenticacao() {
     const token = localStorage.getItem('token');
     if (!token) {
-        // Se não houver token, redirecione para a página de entrada
+        // Se não houver token, redireciona para a página de entrada
         window.location.href = '/TelaEntrada/telaEntrada.html';
+    } else {
+        atualizarBoasVindas(); // Atualiza a mensagem de boas-vindas se o usuário estiver autenticado
     }
 }
 
-function inicializar() {
-    verificarAutenticacao(); // Verifica se o usuário está autenticado
-    atualizarBoasVindas();
+function logoutHandler() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('nomeUsuario');
+    localStorage.removeItem('emailUsuario'); // Remover o email do usuário
+    window.location.href = '/TelaEntrada/telaEntrada.html';
 }
+
+// Certifique-se de que a função inicializar seja sempre chamada quando a página carregar
+window.onload = inicializar;
+
 
 // Adiciona um evento de clique ao botão de logout
 document.getElementById('logoutButton').onclick = logoutHandler;
@@ -105,3 +110,5 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
         alert('Erro ao conectar com o servidor.');
     }
 };
+
+

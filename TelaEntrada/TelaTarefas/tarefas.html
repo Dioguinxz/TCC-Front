@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tarefas.css">
     <title>Tarefas</title>
-    <script src="/TelaEntrada/TelaTarefas/tarefas.js" defer></script>
+    <script src="/TelaEntrada/TelaTarefas/tarefas.js" defer></script> <!-- Certifique-se de que o caminho está correto -->
 </head>
 
 <body>
@@ -15,24 +15,16 @@
             <span class="logo">
                 <img class="img-logo" src="/TelaEntrada/images/LOGO-SIMPLE (2).png" alt="logo">
             </span>
+        </a>
 
-            <button id="logoutButton" class="btn-logout">Logout</button>
-        </a>
-        <a href="/TelaEntrada/EditarUsuario/editarUsuario.html">
-            <button class="btn-profile">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path
-                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
-                </svg>
-            </button>
-        </a>
+        <!-- Botão de Logout -->
+        <button id="logoutButton" class="btn-logout">Logout</button>
     </header>
 
     <div class="sidebar">
         <div class="tasks">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path
-                    d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                <path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
             </svg>
             <h4>Tarefas</h4>
         </div>
@@ -46,12 +38,10 @@
                 <h3>Tarefa</h3>
             </div>
         </div>
-
     </div>
 
     <!-- Modal para cadastrar nova tarefa -->
     <div id="modalCadastrarTarefa" class="modal">
-
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
             <h2>Cadastrar Nova Tarefa</h2>
@@ -72,15 +62,14 @@
     </div>
 
     <!-- Botão para abrir o modal -->
-<!-- Botão para abrir o modal -->
-<button class="btnCadastrarTarefa" id="btnCadastrarTarefa" title="Adicionar Tarefa">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z" />
-    </svg>
-</button>
-
-
+    <button class="btnCadastrarTarefa" id="btnCadastrarTarefa" title="Adicionar Tarefa">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z" />
+        </svg>
+    </button>
 
 </body>
 
 </html>
+
+

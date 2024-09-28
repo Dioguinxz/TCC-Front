@@ -38,3 +38,47 @@ document.getElementById('logoutButton').onclick = logoutHandler;
 window.onload = inicializar;
 
 
+// Obtendo elementos do DOM
+const modal = document.getElementById("modalCadastrarTarefa");
+const btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
+const spanCloseModal = document.getElementById("closeModal");
+
+// Quando o usuário clicar no botão, abre o modal
+btnCadastrarTarefa.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Quando o usuário clicar no 'X', fecha o modal
+spanCloseModal.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Adicionando a lógica de cadastro da tarefa (opcional)
+document.getElementById("formCadastrarTarefa").onsubmit = function(event) {
+    event.preventDefault(); // Previne o envio do formulário
+
+    const tarefaNome = document.getElementById("tarefaNome").value;
+    const tarefaDescricao = document.getElementById("tarefaDescricao").value;
+    const dataFinal = document.getElementById("dataFinal").value;
+
+    // Aqui você pode adicionar a lógica para enviar os dados para o backend ou armazená-los
+
+    console.log("Tarefa Cadastrada:", {
+        tarefaNome,
+        tarefaDescricao,
+        dataFinal
+    });
+
+    // Fechar o modal após o cadastro
+    modal.style.display = "none";
+    
+    // Limpar os campos do formulário
+    document.getElementById("formCadastrarTarefa").reset();
+}

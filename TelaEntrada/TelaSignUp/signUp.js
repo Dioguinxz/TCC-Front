@@ -5,31 +5,37 @@ class UsuarioService {
 
     async criarConta(nome, email, senha) {
         const usuario = { nome, email, senha };
-    
+
         try {
             const response = await fetch(`${this.baseUrl}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuario)
             });
-    
+
+            console.log('Resposta do servidor:', response);
+
             if (response.ok) {
-                // Armazena o nome do usuário no localStorage após o cadastro
+                const data = await response.json();
                 localStorage.setItem('nomeUsuario', nome);
+                localStorage.setItem('token', data.token);
                 alert('Conta criada com sucesso!');
-                window.location.href = '/TelaEntrada/TelaTarefas/tarefas.html'; // Redireciona para a tela de tarefas
+                window.location.href = '/TelaEntrada/TelaTarefas/tarefas.html';
+
             } else if (response.status === 409) {
                 alert('Este email já está registrado.');
+
             } else {
-                alert('Email já está registrado.');
+                alert('Erro ao criar a conta. Tente novamente.');
             }
+
         } catch (error) {
             console.error('Erro:', error);
             alert('Erro de conexão.');
         }
     }
-    
 }
+
 
 function criarContaHandler() {
     const nome = document.getElementById('name').value;

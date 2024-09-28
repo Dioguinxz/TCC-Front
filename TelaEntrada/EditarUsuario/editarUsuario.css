@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'Codec';
+    src: url(fonts/Codec-Cold-Light-trial.ttf);
+    src: url(fonts/Codec-Warm-Thin-trial.ttf);
+    src: url(fonts/Codec-Warm-Regular-trial.ttf);
+    src: url(fonts/Codec-Cold-Bold-trial.ttf);
+    font-weight: normal;
+    font-weight: lighter;
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+    font-family: 'Codec';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fd;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+    width: 100%;
+    background-color: #8D9EFF;
+}
+
+.logo {
+    margin-left: 60px;
+}
+
+.img-logo {
+    height: 43px;
+    margin-top: 2px;
+    margin-left: 100px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.logo:hover .img-logo {
+    filter: brightness(0) saturate(100%) invert(9%) sepia(0%) saturate(0%) hue-rotate(359deg) brightness(100%) contrast(102%);
+}
+
+.tela-container {
+    font-family: 'Codec';
+    display: flex;
+    height: 500px;
+    width: 800px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+    border-radius: 25px;
+}
+
+.left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #8D9EFF;
+    height: 500px;
+    width: 370px;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.left-container h3 {
+    margin: 0px;
+    font-family: 'Codec';
+    color: #fff;
+    font-size: 42px;
+}
+
+.left-container img {
+    width: 220px;
+}
+
+.left-container button {
+    font-family: 'Codec';
+    font-weight: lighter;
+    font-size: 16px;
+    width: 210px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+}
+
+.left-container button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-login:hover {
+    transition: 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+    background-color: #333333;
+}
+
+.right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+}
+
+.right-container h3 {
+    font-size: 45px;
+    color: #8D9EFF;
+    letter-spacing: -1px;
+    position: relative;
+    bottom: 10px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column; /* Centraliza os elementos dentro do formulário */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    width: 400px;
+    position: relative;
+    bottom: 37px;
+}
+
+.input-single {
+    width: 100%;
+    margin: 20px;
+    position: relative;
+}
+
+.input-single svg {
+    width: 18px;
+    fill: #8D9EFF;
+}
+
+.input-single label {
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    color: #8D9EFF;
+    cursor: text;
+    transition: 0.5s ease-in-out;
+}
+
+.input-single .input {
+    width: 100%;
+    padding: 5px;
+    color: #333333;
+    border: 0;
+    border-bottom: 2px solid #8D9EFF;
+    outline: 0;
+    font-size: 16px;
+}
+
+.input-single .input:focus,
+.input-single .input:not(:placeholder-shown) {
+    border-bottom: 2px solid #333333;
+}
+
+.input-single .input:focus ~ label,
+.input-single .input:not(:placeholder-shown) ~ label {
+    transform: translateY(-24px);
+    font-size: 12px;
+    color: #333333;
+}
+
+.right-container button {
+    font-family: 'Codec';
+    font-size: 15px;
+    width: 180px;
+    height: 35px;
+    border-radius: 25px;
+    /* border: 2px solid #8D9EFF; */
+    border: none;
+    color: white;
+    background-color: #8D9EFF;
+    transition: 0.2s ease-in-out;
+    position: relative;
+    bottom: 10px;
+
+}
+
+.right-container button:hover {
+    border: none;
+    background-color: #333333;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="editarUsuario.css">
+    <title>Editar Usuário</title>
+</head>
+<body>
+
+    <header>
+        <a href="/TelaEntrada/telaEntrada.html">
+            <span class="logo">
+                <img class="img-logo" src="/TelaEntrada/images/LOGO-SIMPLE (2).png" alt="logo">
+            </span>
+        </a>
+    </header>
+
+    <div class="tela-container">
+        <div class="left-container">
+            <img src="images/LOGO_V2.png" alt="LOGO_V2">
+        </a>
+        </div>
+
+        <div class="right-container">
+            <h3>Editar Perfil</h3>
+            <form id="editUserForm">
+                <div class="input-single">
+                    <input required type="text" name="name" id="name" class="input" placeholder=" ">
+                    <label for="name">Nome</label>
+                </div>
+                <div class="input-single">
+                    <input required type="email" name="email" id="email" class="input" placeholder=" ">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-single">
+                    <input type="password" name="password" id="password" class="input" placeholder=" ">
+                    <label for="password">Senha</label>
+                </div>
+            </form>
+            <div class="back_or_save">
+            <button type="button" onclick="editarUsuarioHandler()">Salvar</button>
+            <a href="/TelaEntrada/TelaTarefas/tarefas.html">
+                <button class="Voltar">Voltar</button>
+        </div>
+            
+        </div>
+    </div>
+
+    <!-- <script src="editar.js"></script> -->
+</body>
+</html>

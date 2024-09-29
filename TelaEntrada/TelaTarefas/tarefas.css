@@ -9,6 +9,7 @@
     font-weight: bold;
 }
 
+/* Estilos para o corpo */
 body {
     margin: 0;
     font-family: 'Codec';
@@ -16,12 +17,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* Ajustado para começar no topo */
     align-items: center;
     height: 100vh;
     color: #4a4a4a;
 }
 
+/* Estilos para o cabeçalho */
 header {
     position: fixed;
     top: 0;
@@ -34,7 +35,6 @@ header {
     width: 100%;
     background-color: #8D9EFF;
     z-index: 1000;
-    /* Garantir que o header esteja acima do conteúdo */
 }
 
 .logo {
@@ -52,29 +52,66 @@ header {
     filter: brightness(0) saturate(100%) invert(9%) sepia(0%) saturate(0%) hue-rotate(359deg) brightness(100%) contrast(102%);
 }
 
+/* Estilos para o botão de perfil */
 .btn-profile {
     border: none;
     background-color: transparent;
-    /* border: 1px solid; */
     margin-right: 70px;
 }
 
 .btn-profile svg {
     width: 20px;
     fill: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: 0.3s ease-in-out;
-
 }
 
 .btn-profile svg:hover {
     fill: #4a4a4a;
-    transition: 0.3s ease-in-out;
     cursor: pointer;
     transform: scale(1.05);
 }
+
+/* Estilos para o dropdown */
+.dropdown {
+    /* margin: 1px solid black; */
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+
+    
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right: 0;
+    top: 100%;
+    margin-right: 30px;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    transition: 0.3s ease-in-out;
+    background-color: #f1f1f1;
+}
+
+/* Exibir dropdown ao passar o mouse */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 
 .sidebar {
     position: fixed;

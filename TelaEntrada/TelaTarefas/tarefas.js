@@ -2,6 +2,7 @@
 function inicializar() {
     verificarAutenticacao(); // Verifica se o usuário está autenticado
     atualizarBoasVindas();
+    buscarTarefas();
 }
 
 
@@ -115,5 +116,57 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
         alert('Erro ao conectar com o servidor.');
     }
 };
+async function buscarTarefasPorEmail() {
+    const token = localStorage.getItem('token');
+    const emailUsuario = localStorage.getItem('emailUsuario'); // Obtendo o email do localStorage
 
+    if (!emailUsuario) {
+        alert('Email do usuário não encontrado.');
+        return;
+    }
 
+    try {
+        const response = await fetch(`http://localhost:8080/tarefas/${emailUsuario}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (response.ok) {
+            const tarefas = await response.json();
+            mostrarTarefas(tarefas); // Chama a função que mostra as tarefas
+        } else {
+            alert('Erro ao carregar tarefas.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro de conexão.');
+    }
+}
+
+function mostrarTarefas(tarefas) {
+    const cardTarefa = document.querySelector('.card-tarefa');
+
+    // Limpa o conteúdo atual da card-tarefa antes de adicionar as novas tarefas
+    cardTarefa.innerHTML = `
+        <div class="nome-tarefa">
+            <h3>Tarefas</h3>
+        </div>
+    `; // Reset the card-tarefa's HTML
+
+    tarefas.forEach(tarefa => {
+        const tarefaElement = document.createElement('div');
+        tarefaElement.className = 'tarefa-item';
+        tarefaElement.innerHTML = `
+            <h4>${tarefa.nome}</h4>
+            <p>${tarefa.descricao}</p>
+            <p>Data Final: ${tarefa.dataFinal}</p>
+            <p>Status: ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
+        `;
+        cardTarefa.appendChild(tarefaElement);
+    });
+}
+
+// Certifique-se de chamar a função ao carregar a página ou em um momento apropriado
+window.onload = buscarTarefasPorEmail;

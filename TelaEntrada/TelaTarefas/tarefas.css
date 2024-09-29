@@ -73,7 +73,6 @@ header {
 
 /* Estilos para o dropdown */
 .dropdown {
-    /* margin: 1px solid black; */
     position: relative;
     display: inline-block;
 }
@@ -95,11 +94,12 @@ header {
 }
 
 .dropdown-menu a {
-    color: black;
+    color: #4a4a4a;
     padding: 8px 16px;
     text-decoration: none;
     display: block;
     transition: 0.3s ease-in-out;
+    border-radius: 3px;
 }
 
 .dropdown-menu a:hover {
@@ -111,6 +111,33 @@ header {
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+
+.dropdown-menu a svg {
+    vertical-align: middle; 
+}
+
+.dropdown-menu svg {
+    fill: #4a4a4a;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: #f0f0f0; 
+    margin-right: 18px; 
+}
+
+.dropdown-menu a {
+    /* gap: 15px; */
+    display: flex;
+    align-items: center; 
+    padding: 8px 16px; 
+}
+
+
 
 
 .sidebar {

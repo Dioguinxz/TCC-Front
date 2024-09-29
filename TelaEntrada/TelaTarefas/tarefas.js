@@ -33,8 +33,8 @@ function logoutHandler() {
 window.onload = inicializar;
 
 
-// Adiciona um evento de clique ao botão de logout
-document.getElementById('logoutButton').onclick = logoutHandler;
+
+// document.getElementById('logoutButton').onclick = logoutHandler;
 
 // Chama a função inicializar quando a página é carregada
 window.onload = inicializar;
@@ -46,6 +46,11 @@ const spanCloseModal = document.getElementById("closeModal");
 
 // Quando o usuário clicar no botão, abre o modal
 btnCadastrarTarefa.onclick = function() {
+    btnCadastrarTarefa.onclick = function() {
+        console.log("Botão clicado! Abrindo o modal.");
+        modal.style.display = "block";
+    }
+    
     modal.style.display = "block";
 }
 

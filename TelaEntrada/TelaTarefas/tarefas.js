@@ -1,10 +1,8 @@
-
 function inicializar() {
     verificarAutenticacao(); // Verifica se o usuário está autenticado
-    atualizarBoasVindas();
-    buscarTarefas();
+    atualizarBoasVindas();   // Atualiza a mensagem de boas-vindas
+    buscarTarefasPorEmail(); // Busca as tarefas do usuário
 }
-
 
 // Função para atualizar a mensagem de boas-vindas
 function atualizarBoasVindas() {
@@ -30,37 +28,19 @@ function logoutHandler() {
     window.location.href = '/TelaEntrada/telaEntrada.html';
 }
 
-// Certifique-se de que a função inicializar seja sempre chamada quando a página carregar
-window.onload = inicializar;
-
-
-
-// document.getElementById('logoutButton').onclick = logoutHandler;
-
-// Chama a função inicializar quando a página é carregada
-window.onload = inicializar;
-
-// Obtendo elementos do DOM
+// Modal logic
 const modal = document.getElementById("modalCadastrarTarefa");
 const btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
 const spanCloseModal = document.getElementById("closeModal");
 
-// Quando o usuário clicar no botão, abre o modal
 btnCadastrarTarefa.onclick = function() {
-    btnCadastrarTarefa.onclick = function() {
-        console.log("Botão clicado! Abrindo o modal.");
-        modal.style.display = "block";
-    }
-    
     modal.style.display = "block";
 }
 
-// Quando o usuário clicar no 'X', fecha o modal
 spanCloseModal.onclick = function() {
     modal.style.display = "none";
 }
 
-// Quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -69,22 +49,21 @@ window.onclick = function(event) {
 
 // Função para cadastrar a tarefa
 document.getElementById("formCadastrarTarefa").onsubmit = async function(event) {
-    event.preventDefault(); // Previne o envio do formulário
+    event.preventDefault();
 
     const tarefaNome = document.getElementById("tarefaNome").value;
     const tarefaDescricao = document.getElementById("tarefaDescricao").value;
     const dataFinal = document.getElementById("dataFinal").value;
 
-    // Obtem o token e o usuarioId do localStorage
     const token = localStorage.getItem('token');
-    const emailUsuario = localStorage.getItem('emailUsuario'); // email do usuário logado
+    const emailUsuario = localStorage.getItem('emailUsuario');
 
     const tarefa = {
         nome: tarefaNome,
         descricao: tarefaDescricao,
         dataFinal: dataFinal,
-        concluida: false, // Tarefa inicialmente não concluída
-        emailUsuario: emailUsuario // ID do usuário logado
+        concluida: false,
+        emailUsuario: emailUsuario
     };
 
     try {
@@ -92,22 +71,16 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Envia o token de autorização
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(tarefa) // Envia os dados da tarefa como JSON
+            body: JSON.stringify(tarefa)
         });
 
         if (response.ok) {
             const data = await response.json();
             alert('Tarefa cadastrada com sucesso!');
-
-            // Fechar o modal após o cadastro
             modal.style.display = "none";
-
-            // Limpar os campos do formulário
             document.getElementById("formCadastrarTarefa").reset();
-
-            // Aqui você pode redirecionar ou atualizar a lista de tarefas, se necessário
         } else {
             alert('Erro ao cadastrar tarefa.');
         }
@@ -116,9 +89,11 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
         alert('Erro ao conectar com o servidor.');
     }
 };
+
+// Função para buscar tarefas
 async function buscarTarefasPorEmail() {
     const token = localStorage.getItem('token');
-    const emailUsuario = localStorage.getItem('emailUsuario'); // Obtendo o email do localStorage
+    const emailUsuario = localStorage.getItem('emailUsuario');
 
     if (!emailUsuario) {
         alert('Email do usuário não encontrado.');
@@ -145,15 +120,10 @@ async function buscarTarefasPorEmail() {
     }
 }
 
+// Função para mostrar as tarefas
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
-
-    // Limpa o conteúdo atual da card-tarefa antes de adicionar as novas tarefas
-    cardTarefa.innerHTML = `
-        <div class="nome-tarefa">
-            <h3>Tarefas</h3>
-        </div>
-    `; // Reset the card-tarefa's HTML
+    cardTarefa.innerHTML = ''; // Limpa o conteúdo atual antes de adicionar as novas tarefas
 
     tarefas.forEach(tarefa => {
         const tarefaElement = document.createElement('div');
@@ -168,5 +138,5 @@ function mostrarTarefas(tarefas) {
     });
 }
 
-// Certifique-se de chamar a função ao carregar a página ou em um momento apropriado
-window.onload = buscarTarefasPorEmail;
+// Certifique-se de que a função inicializar seja chamada ao carregar a página
+window.onload = inicializar;

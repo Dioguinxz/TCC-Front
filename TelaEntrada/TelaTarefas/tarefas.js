@@ -58,6 +58,11 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
     const token = localStorage.getItem('token');
     const emailUsuario = localStorage.getItem('emailUsuario');
 
+    if (!token || !emailUsuario) {
+        alert('Token ou email não encontrados. Faça o login novamente.');
+        return;
+    }
+
     const tarefa = {
         nome: tarefaNome,
         descricao: tarefaDescricao,
@@ -81,6 +86,7 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function(event) 
             alert('Tarefa cadastrada com sucesso!');
             modal.style.display = "none";
             document.getElementById("formCadastrarTarefa").reset();
+            buscarTarefasPorEmail(); // Atualizar a lista de tarefas após o cadastro
         } else {
             alert('Erro ao cadastrar tarefa.');
         }
@@ -108,21 +114,27 @@ async function buscarTarefasPorEmail() {
             }
         });
 
+        console.log('Response status:', response.status); // Verifique o status da resposta
         if (response.ok) {
             const tarefas = await response.json();
+            console.log('Tarefas recebidas:', tarefas); // Verifique se as tarefas foram recebidas
             mostrarTarefas(tarefas); // Chama a função que mostra as tarefas
         } else {
             alert('Erro ao carregar tarefas.');
         }
     } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro de conexão.');
+        console.error('Erro ao buscar tarefas:', error.message);
     }
 }
 
 // Função para mostrar as tarefas
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
+    if (!cardTarefa) {
+        console.error('Elemento .card-tarefa não encontrado.');
+        return;
+    }
+
     cardTarefa.innerHTML = ''; // Limpa o conteúdo atual antes de adicionar as novas tarefas
 
     tarefas.forEach(tarefa => {

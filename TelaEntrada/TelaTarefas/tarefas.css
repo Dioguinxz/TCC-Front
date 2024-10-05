@@ -311,3 +311,30 @@ form button:hover {
     background-color: #7a8dff;
     transition: 0.1s ease-in-out;
 }
+
+.card-tarefa {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria colunas que se ajustam ao tamanho do card */
+    gap: 20px; /* Espaço entre os cards */
+}
+
+.tarefa-item {
+    background-color: #f9f9f9; /* Cor de fundo do card */
+    border: 1px solid #ccc; /* Borda do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno do card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do card */
+}
+
+.tarefa-card {
+    margin-bottom: 10px; /* Espaço abaixo do card */
+}
+
+.tarefa-card h4 {
+    margin: 0; /* Remove a margem do título */
+    font-size: 1.2em; /* Tamanho do título */
+}
+
+.tarefa-card p {
+    margin: 5px 0; /* Margem entre os parágrafos */
+}

@@ -130,6 +130,8 @@ async function buscarTarefasPorEmail() {
     }
 }
 
+// ... seu código anterior ...
+
 // Função para mostrar as tarefas
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
@@ -143,10 +145,43 @@ function mostrarTarefas(tarefas) {
             <p>${tarefa.descricao}</p>
             <p>Data Final: ${tarefa.dataFinal}</p>
             <p>Status: ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
+            <button onclick="editarTarefa(${tarefa.id})">Editar</button>
+            <button onclick="apagarTarefa(${tarefa.id})">Apagar</button>
         `;
         cardTarefa.appendChild(tarefaElement);
     });
 }
+
+
+// ... seu código anterior ...
+
+// Função para mostrar as tarefas
+function mostrarTarefas(tarefas) {
+    const cardTarefa = document.querySelector('.card-tarefa');
+    cardTarefa.innerHTML = ''; // Limpa o conteúdo atual antes de adicionar as novas tarefas
+
+    tarefas.forEach(tarefa => {
+        const tarefaElement = document.createElement('div');
+        tarefaElement.className = 'tarefa-item';
+        tarefaElement.innerHTML = `
+            <h4>${tarefa.nome}</h4>
+            <p>${tarefa.descricao}</p>
+            <p>Data Final: ${tarefa.dataFinal}</p>
+            <p>Status: ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
+            <input type="checkbox" onchange="atualizarStatus(${tarefa.id}, this.checked)" ${tarefa.concluida ? 'checked' : ''}>
+            <button onclick="editarTarefa(${tarefa.id})">Editar</button>
+            <button onclick="apagarTarefa(${tarefa.id})">Apagar</button>
+        `;
+        cardTarefa.appendChild(tarefaElement);
+    });
+}
+
+
+
+
+
+
+
 
 // Certifique-se de que ambas as funções sejam chamadas ao carregar a página
 window.onload = inicializar;

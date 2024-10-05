@@ -189,22 +189,40 @@ header {
 .card-tarefa{
     position: relative;
     margin-top: 75px;
-    background-color: #8D9EFF;
-    width: 60%;
+    /* background-color: #8D9EFF; */
+    width: 80%;
     height: 32%;
     border-radius: 20px;
     /* border: 2px solid black; */
 }
 
-.nome-tarefa h3 {
-    position: absolute;
-    box-sizing: content-box;
-    left: 25px;
-    top: -15px;
-    /* border: 1px solid; */
-    font-size: 35px;
-    
+.card-tarefa {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas que se ajustam ao tamanho do card */
+    gap: 28px; /* Espaço entre os cards */
 }
+
+.tarefa-item {
+    background-color: #f9f9f9; /* Cor de fundo do card */
+    border: 1px solid #ccc; /* Borda do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno do card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do card */
+}
+
+.tarefa-card {
+    margin-bottom: 10px; /* Espaço abaixo do card */
+}
+
+.tarefa-card h4 {
+    margin: 0; /* Remove a margem do título */
+    font-size: 1.2em; /* Tamanho do título */
+}
+
+.tarefa-card p {
+    margin: 5px 0; /* Margem entre os parágrafos */
+}
+
 
 
 .btnCadastrarTarefa {
@@ -312,29 +330,3 @@ form button:hover {
     transition: 0.1s ease-in-out;
 }
 
-.card-tarefa {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria colunas que se ajustam ao tamanho do card */
-    gap: 20px; /* Espaço entre os cards */
-}
-
-.tarefa-item {
-    background-color: #f9f9f9; /* Cor de fundo do card */
-    border: 1px solid #ccc; /* Borda do card */
-    border-radius: 8px; /* Bordas arredondadas */
-    padding: 15px; /* Espaçamento interno do card */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do card */
-}
-
-.tarefa-card {
-    margin-bottom: 10px; /* Espaço abaixo do card */
-}
-
-.tarefa-card h4 {
-    margin: 0; /* Remove a margem do título */
-    font-size: 1.2em; /* Tamanho do título */
-}
-
-.tarefa-card p {
-    margin: 5px 0; /* Margem entre os parágrafos */
-}

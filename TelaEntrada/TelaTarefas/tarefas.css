@@ -197,6 +197,7 @@ header {
 }
 
 .card-tarefa {
+    font-family: 'Codec';
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas que se ajustam ao tamanho do card */
     gap: 28px; /* Espaço entre os cards */
@@ -221,6 +222,115 @@ header {
 
 .tarefa-card p {
     margin: 5px 0; /* Margem entre os parágrafos */
+}
+
+/* .card-tarefa button {
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    border: none;
+} */
+
+
+button {
+    font-family: 'Codec';
+}
+
+.btn-apagar-tarefa {
+    background-color: #ff4d4d; /* Vermelho claro para indicar alerta */
+    color: white;              /* Texto em branco para contraste */
+    border: none;              /* Sem borda */
+    border-radius: 4px;       /* Bordas arredondadas */
+    padding: 8px 10px;        /* Espaçamento interno reduzido */
+    font-size: 14px;          /* Tamanho da fonte reduzido */
+    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+    margin-left: 5px;
+     
+
+}
+
+.btn-apagar-tarefa:hover{
+    background-color: #ff1a1a;
+
+}
+
+.btn-apagar-tarefa:active{
+    background-color: #cc0000;
+
+}
+
+.btn-editar-tarefa {
+    background-color: #8D9EFF; /* Azul claro */
+    color: white;              /* Texto em branco para contraste */
+    border: none;              /* Sem borda */
+    border-radius: 4px;       /* Bordas arredondadas */
+    padding: 8px 10px;        /* Espaçamento interno */
+    font-size: 14px;          /* Tamanho da fonte */
+    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+
+}
+
+.btn-editar-tarefa:hover{
+    background-color: #7B9BFF;
+
+}
+
+.btn-editar-tarefa:active{
+    background-color: #7B9BFF;
+
+}
+
+.checkbox-container {
+    display: flex;              /* Flexbox para alinhar o checkbox e o texto */
+    align-items: center;       /* Centraliza verticalmente */
+    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
+}
+
+.custom-checkbox {
+    display: none;             /* Esconde o checkbox padrão */
+}
+
+.checkmark {
+    width: 20px;              /* Largura do checkmark */
+    height: 20px;             /* Altura do checkmark */
+    border: 2px solid #8D9EFF; /* Borda azul clara */
+    border-radius: 4px;       /* Bordas arredondadas */
+    background-color: white;  /* Cor de fundo padrão */
+    position: relative;        /* Para posicionamento do check */
+    margin-right: 10px;       /* Espaçamento entre o checkbox e o texto */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+.custom-checkbox:checked + .checkmark {
+    background-color: #8D9EFF; /* Azul claro quando marcado */
+    border-color: #5E7CFF;     /* Borda azul mais escura quando marcado */
+}
+
+.custom-checkbox:checked + .checkmark::after {
+    content: '';               /* Adiciona um pseudo-elemento */
+    position: absolute;        /* Posiciona o checkmark dentro do check */
+    left: 6px;                /* Ajuste da posição do check */
+    top: 2px;                 /* Ajuste da posição do check */
+    width: 6px;               /* Largura do check */
+    height: 12px;             /* Altura do check */
+    border: solid white;      /* Cor do check */
+    border-width: 0 2px 2px 0; /* Apenas o lado direito e inferior */
+    transform: rotate(45deg); /* Rotaciona para parecer um check */
+}
+
+.bold {
+    font-weight: bold;
+    font-family: 'Codec';
+}
+
+
+
+.pendentes {
+    display: flex;
+    gap: 12px;
+
 }
 
 
@@ -329,4 +439,6 @@ form button:hover {
     background-color: #7a8dff;
     transition: 0.1s ease-in-out;
 }
+
+
 

@@ -33,15 +33,15 @@ const modal = document.getElementById("modalCadastrarTarefa");
 const btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
 const spanCloseModal = document.getElementById("closeModal");
 
-btnCadastrarTarefa.onclick = function() {
+btnCadastrarTarefa.onclick = function () {
     modal.style.display = "block";
 }
 
-spanCloseModal.onclick = function() {
+spanCloseModal.onclick = function () {
     modal.style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
@@ -49,7 +49,7 @@ window.onclick = function(event) {
 
 // Função para cadastrar a tarefa
 // Função para cadastrar a tarefa
-document.getElementById("formCadastrarTarefa").onsubmit = async function(event) {
+document.getElementById("formCadastrarTarefa").onsubmit = async function (event) {
     event.preventDefault(); // Previne o envio do formulário
 
     const tarefaNome = document.getElementById("tarefaNome").value;
@@ -164,13 +164,20 @@ function mostrarTarefas(tarefas) {
         const tarefaElement = document.createElement('div');
         tarefaElement.className = 'tarefa-item';
         tarefaElement.innerHTML = `
-            <h4>${tarefa.nome}</h4>
-            <p>${tarefa.descricao}</p>
-            <p>Data Final: ${tarefa.dataFinal}</p>
-            <p>Status: ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
-            <input type="checkbox" onchange="atualizarStatus(${tarefa.id}, this.checked)" ${tarefa.concluida ? 'checked' : ''}>
-            <button onclick="editarTarefa(${tarefa.id})">Editar</button>
-            <button onclick="apagarTarefa(${tarefa.id})">Apagar</button>
+     <h2>${tarefa.nome}</h2>
+        <p><span class="bold">Descrição:</span> ${tarefa.descricao}</p>
+        <p><span class="bold">Data Final:</span> ${tarefa.dataFinal}</p>
+        <div class="pendentes">
+            <p><span class="bold">Status:</span> ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
+            <label class="checkbox-container">
+                <input type="checkbox" class="custom-checkbox" onchange="atualizarStatus(${tarefa.id}, this.checked)" ${tarefa.concluida ? 'checked' : ''}>
+                <span class="checkmark"></span>
+            </label>
+        </div>
+            <button class="btn-editar-tarefa" onclick="editarTarefa(${tarefa.id})">Editar</button>
+            <button class="btn-apagar-tarefa"  onclick="apagarTarefa(${tarefa.id})">Apagar</button>
+            
+            
         `;
         cardTarefa.appendChild(tarefaElement);
     });

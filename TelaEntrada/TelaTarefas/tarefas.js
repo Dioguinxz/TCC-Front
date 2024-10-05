@@ -1,9 +1,10 @@
 function inicializar() {
-    verificarAutenticacao(); 
-    atualizarBoasVindas();   
-    buscarTarefasPorEmail(); 
+    verificarAutenticacao(); // Verifica se o usuário está autenticado
+    atualizarBoasVindas();   // Atualiza a mensagem de boas-vindas
+    buscarTarefasPorEmail(); // Busca as tarefas do usuário
 }
 
+// Função para atualizar a mensagem de boas-vindas
 function atualizarBoasVindas() {
     const nomeUsuario = localStorage.getItem('nomeUsuario');
     const boasVindasElement = document.getElementById('boasVindas');
@@ -13,16 +14,17 @@ function atualizarBoasVindas() {
 function verificarAutenticacao() {
     const token = localStorage.getItem('token');
     if (!token) {
+        // Se não houver token, redireciona para a página de entrada
         window.location.href = '/TelaEntrada/telaEntrada.html';
     } else {
-        atualizarBoasVindas();
+        atualizarBoasVindas(); // Atualiza a mensagem de boas-vindas se o usuário estiver autenticado
     }
 }
 
 function logoutHandler() {
     localStorage.removeItem('token');
     localStorage.removeItem('nomeUsuario');
-    localStorage.removeItem('emailUsuario'); 
+    localStorage.removeItem('emailUsuario'); // Remover o email do usuário
     window.location.href = '/TelaEntrada/telaEntrada.html';
 }
 
@@ -45,6 +47,8 @@ window.onclick = function (event) {
     }
 }
 
+// Função para cadastrar a tarefa
+// Função para cadastrar a tarefa
 document.getElementById("formCadastrarTarefa").onsubmit = async function (event) {
     event.preventDefault(); // Previne o envio do formulário
 
@@ -52,15 +56,16 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
     const tarefaDescricao = document.getElementById("tarefaDescricao").value;
     const dataFinal = document.getElementById("dataFinal").value;
 
-    
+    // Obtem o token e o emailUsuario do localStorage
     const token = localStorage.getItem('token');
-    const emailUsuario = localStorage.getItem('emailUsuario');
+    const emailUsuario = localStorage.getItem('emailUsuario'); // email do usuário logado
 
     const tarefa = {
         nome: tarefaNome,
         descricao: tarefaDescricao,
         dataFinal: dataFinal,
-        concluida: false,
+        concluida: false, // Tarefa inicialmente não concluída
+        emailUsuario: emailUsuario // ID do usuário logado
     };
 
     try {
@@ -68,23 +73,23 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}` // Envia o token de autorização
             },
-            body: JSON.stringify(tarefa)
+            body: JSON.stringify(tarefa) // Envia os dados da tarefa como JSON
         });
 
         if (response.ok) {
             const data = await response.json();
             alert('Tarefa cadastrada com sucesso!');
 
-
+            // Fechar o modal após o cadastro
             modal.style.display = "none";
 
-
+            // Limpar os campos do formulário
             document.getElementById("formCadastrarTarefa").reset();
 
-
-            buscarTarefasPorEmail();
+            // Atualizar a lista de tarefas sem recarregar a página
+            buscarTarefasPorEmail(); // Chama a função para buscar as tarefas atualizadas
         } else {
             alert('Erro ao cadastrar tarefa.');
         }
@@ -95,7 +100,7 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
 };
 
 
-
+// Função para buscar tarefas
 async function buscarTarefasPorEmail() {
     const token = localStorage.getItem('token');
     const emailUsuario = localStorage.getItem('emailUsuario');
@@ -115,7 +120,7 @@ async function buscarTarefasPorEmail() {
 
         if (response.ok) {
             const tarefas = await response.json();
-            mostrarTarefas(tarefas);
+            mostrarTarefas(tarefas); // Chama a função que mostra as tarefas
         } else {
             alert('Erro ao carregar tarefas.');
         }
@@ -125,12 +130,35 @@ async function buscarTarefasPorEmail() {
     }
 }
 
+// ... seu código anterior ...
 
-
-
+// Função para mostrar as tarefas
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
-    cardTarefa.innerHTML = '';
+    cardTarefa.innerHTML = ''; // Limpa o conteúdo atual antes de adicionar as novas tarefas
+
+    tarefas.forEach(tarefa => {
+        const tarefaElement = document.createElement('div');
+        tarefaElement.className = 'tarefa-item';
+        tarefaElement.innerHTML = `
+            <h4>${tarefa.nome}</h4>
+            <p>${tarefa.descricao}</p>
+            <p>Data Final: ${tarefa.dataFinal}</p>
+            <p>Status: ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
+            <button onclick="editarTarefa(${tarefa.id})">Editar</button>
+            <button onclick="apagarTarefa(${tarefa.id})">Apagar</button>
+        `;
+        cardTarefa.appendChild(tarefaElement);
+    });
+}
+
+
+// ... seu código anterior ...
+
+// Função para mostrar as tarefas
+function mostrarTarefas(tarefas) {
+    const cardTarefa = document.querySelector('.card-tarefa');
+    cardTarefa.innerHTML = ''; // Limpa o conteúdo atual antes de adicionar as novas tarefas
 
     tarefas.forEach(tarefa => {
         const tarefaElement = document.createElement('div');
@@ -147,7 +175,7 @@ function mostrarTarefas(tarefas) {
             </label>
         </div>
             <button class="btn-editar-tarefa" onclick="editarTarefa(${tarefa.id})">Editar</button>
-            <button class="btn-apagar-tarefa" onclick="apagarTarefa(${tarefa.id})">Apagar</button>
+            <button class="btn-apagar-tarefa"  onclick="apagarTarefa(${tarefa.id})">Apagar</button>
             
             
         `;
@@ -156,26 +184,11 @@ function mostrarTarefas(tarefas) {
 }
 
 
-async function apagarTarefa(id) {
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`http://localhost:8080/tarefas/${id}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
-
-    if (response.ok) {
-        alert('Tarefa apagada com sucesso!');
-        buscarTarefasPorEmail();
-    } else {
-        console.error('Erro ao apagar a tarefa:', response.statusText);
-        alert('Erro ao apagar a tarefa.');
-    }
-}
 
 
 
 
+
+
+// Certifique-se de que ambas as funções sejam chamadas ao carregar a página
 window.onload = inicializar;

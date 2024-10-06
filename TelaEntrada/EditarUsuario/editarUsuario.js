@@ -77,3 +77,42 @@ async function editarUsuarioHandler() {
 
 // Adiciona um listener ao botão de edição
 document.getElementById("editarButton").addEventListener("click", editarUsuarioHandler);
+
+
+async function excluirUsuario() {
+    const emailDoUsuario = localStorage.getItem("emailUsuario"); // Recupera o email do localStorage
+    const token = localStorage.getItem("token"); // Recupera o token do localStorage
+
+    if (!emailDoUsuario) {
+        alert("Email do usuário não encontrado.");
+        return;
+    }
+
+    const confirmacao = confirm("Você tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.");
+    
+    if (confirmacao) {
+        try {
+            const response = await fetch(`http://localhost:8080/usuario/excluirPorEmail/${emailDoUsuario}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                const errorResponse = await response.json();
+                throw new Error(`Erro ${response.status}: ${errorResponse.message || 'Erro ao excluir usuário'}`);
+            }
+
+            alert("Usuário excluído com sucesso!");
+            localStorage.removeItem("emailUsuario"); // Remove o email do localStorage
+            localStorage.removeItem("token"); // Remove o token do localStorage
+            window.location.href = "/TelaEntrada/telaEntrada.html"; // Redireciona para a tela de entrada
+
+        } catch (error) {
+            console.error(error.message);
+            alert("Erro ao excluir usuário: " + error.message);
+        }
+    }
+}

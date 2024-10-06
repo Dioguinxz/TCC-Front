@@ -6,20 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tarefas.css">
     <title>Tarefas</title>
-    <script src="/TelaEntrada/TelaTarefas/tarefas.js" defer></script>
-    <!-- Certifique-se de que o caminho está correto -->
 </head>
 
 <body>
-
     <header>
         <a href="/TelaEntrada/telaEntrada.html">
             <span class="logo">
                 <img class="img-logo" src="/TelaEntrada/images/LOGO-SIMPLE (2).png" alt="logo">
             </span>
         </a>
-
-
 
         <div class="dropdown">
             <button class="btn-profile">
@@ -49,11 +44,7 @@
                 </a>
             </div>
         </div>
-
-
     </header>
-
-
 
     <div class="sidebar">
         <div class="tasks">
@@ -67,31 +58,23 @@
 
     <div class="container">
         <div class="boasVindas" id="boasVindas"></div>
-
         <div class="card-tarefa">
-            <div class="nome-tarefa">
-
-            </div>
+            <div class="nome-tarefa"></div>
         </div>
     </div>
 
-    
     <!-- Modal para cadastrar nova tarefa -->
     <div id="modalCadastrarTarefa" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
             <h2>Cadastrar Nova Tarefa</h2>
-
             <form id="formCadastrarTarefa">
                 <label for="tarefaNome">Nome da Tarefa:</label>
                 <input type="text" id="tarefaNome" name="tarefaNome" required>
-
                 <label for="tarefaDescricao">Descrição:</label>
                 <textarea id="tarefaDescricao" name="tarefaDescricao" required></textarea>
-
                 <label for="dataFinal">Data Final:</label>
                 <input type="date" id="dataFinal" name="dataFinal" required>
-
                 <button type="submit">Cadastrar</button>
             </form>
         </div>
@@ -101,10 +84,31 @@
     <button class="btnCadastrarTarefa" id="btnCadastrarTarefa" title="Adicionar Tarefa">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path
-                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z" />
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32v128H64c-17.7 0-32 14.3-32 32s14.3 32 32 32h128v128c0 17.7 14.3 32 32 32s32-14.3 32-32V288h128c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
         </svg>
     </button>
+    <!-- Modal para editar tarefa -->
+<div id="modalEditarTarefa" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalEditar">&times;</span>
+        <h2>Editar Tarefa</h2>
+        <form id="formEditarTarefa">
+            <label for="tarefaNomeEditar">Nome da Tarefa:</label>
+            <input type="text" id="tarefaNomeEditar" name="nome" required>
 
+            <label for="tarefaDescricaoEditar">Descrição:</label>
+            <textarea id="tarefaDescricaoEditar" name="descricao" required></textarea>
+
+            <label for="dataFinalEditar">Data Final:</label>
+            <input type="date" id="dataFinalEditar" name="dataFinal" required>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+
+
+    <script src="tarefas.js"></script>
 </body>
 
 </html>

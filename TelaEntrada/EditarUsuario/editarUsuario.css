@@ -196,3 +196,20 @@ form {
     transition: 0.2s ease-in-out;
     cursor: pointer;
 }
+
+.btn-excluir {
+    font-family: 'Codec';
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.btn-excluir:hover {
+    background-color: #cc0000;
+    transition: 0.3s ease-in-out;
+}

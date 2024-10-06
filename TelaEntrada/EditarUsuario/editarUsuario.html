@@ -20,6 +20,7 @@
         <div class="left-container">
             <img src="images/LOGO_V2.png" alt="LOGO_V2">
         </a>
+        <button id="excluirUsuarioButton" onclick="excluirUsuario()" class="btn-excluir">Excluir Usuário</button>
         </div>
 
         <div class="right-container">
@@ -29,10 +30,10 @@
                     <input required type="text" name="name" id="name" class="input" placeholder=" ">
                     <label for="name">Nome</label>
                 </div>
-                <div class="input-single">
-                    <input required type="email" name="email" id="email" class="input" placeholder=" ">
-                    <label for="email">Email</label>
-                </div>
+                    <div class="input-single">
+                        <input required type="email" name="email" id="email" class="input" placeholder=" " readonly>
+                        <label for="email">Email</label>
+                    </div>
                 <div class="input-single">
                     <input type="password" name="password" id="password" class="input" placeholder=" ">
                     <label for="password">Senha</label>

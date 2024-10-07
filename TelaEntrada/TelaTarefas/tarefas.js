@@ -178,77 +178,77 @@ async function apagarTarefa(id) {
         alert('Erro ao conectar com o servidor.');
     }
 }
-// document.getElementById("formEditarTarefa").onsubmit = async function (event) {
-//     event.preventDefault();
+document.getElementById("formEditarTarefa").onsubmit = async function (event) {
+    event.preventDefault();
 
-//     const tarefaNome = document.getElementById("tarefaNomeEditar").value;
-//     const tarefaDescricao = document.getElementById("tarefaDescricaoEditar").value;
-//     const dataFinal = document.getElementById("dataFinalEditar").value;
-//     const tarefaId = document.getElementById("formEditarTarefa").getAttribute('data-id', tarefa.idString);
+    const tarefaNome = document.getElementById("tarefaNomeEditar").value;
+    const tarefaDescricao = document.getElementById("tarefaDescricaoEditar").value;
+    const dataFinal = document.getElementById("dataFinalEditar").value;
+    const tarefaId = document.getElementById("formEditarTarefa").getAttribute('data-id', tarefa.idString);
 
-//     const token = localStorage.getItem('token');
-//     const emailUsuario = localStorage.getItem('emailUsuario');
+    const token = localStorage.getItem('token');
+    const emailUsuario = localStorage.getItem('emailUsuario');
 
-//     const tarefaAtualizada = {
-//         nome: tarefaNome,
-//         descricao: tarefaDescricao,
-//         dataFinal: dataFinal,
-//         concluida: false, 
-//         emailUsuario: emailUsuario
-//     };
+    const tarefaAtualizada = {
+        nome: tarefaNome,
+        descricao: tarefaDescricao,
+        dataFinal: dataFinal,
+        concluida: false, 
+        emailUsuario: emailUsuario
+    };
 
-//     try {
-//         const response = await fetch(`http://localhost:8080/tarefas/${tarefaId}`, {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${token}`
-//             },
-//             body: JSON.stringify(tarefaAtualizada)
-//         });
+    try {
+        const response = await fetch(`http://localhost:8080/tarefas/${tarefaId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(tarefaAtualizada)
+        });
 
-//         if (response.ok) {
-//             alert('Tarefa editada com sucesso!');
-//             document.getElementById("modalEditarTarefa").style.display = "none";
-//             buscarTarefasPorEmail();
-//         } else {
-//             alert('Erro ao editar tarefa.');
-//         }
-//     } catch (error) {
-//         console.error('Erro ao conectar com o servidor:', error);
-//         alert('Erro ao conectar com o servidor.');
-//     }
-// };
+        if (response.ok) {
+            alert('Tarefa editada com sucesso!');
+            document.getElementById("modalEditarTarefa").style.display = "none";
+            buscarTarefasPorEmail();
+        } else {
+            alert('Erro ao editar tarefa.');
+        }
+    } catch (error) {
+        console.error('Erro ao conectar com o servidor:', error);
+        alert('Erro ao conectar com o servidor.');
+    }
+};
 
-// // Função para abrir o modal de edição de tarefa e preencher os campos com os dados da tarefa
-// function editarTarefa(id) {
-//     const modalEditar = document.getElementById('modalEditarTarefa');
-//     modalEditar.style.display = 'block';
+// Função para abrir o modal de edição de tarefa e preencher os campos com os dados da tarefa
+function editarTarefa(id) {
+    const modalEditar = document.getElementById('modalEditarTarefa');
+    modalEditar.style.display = 'block';
 
-//     // Buscar a tarefa pelo ID e preencher o modal com os dados dela
-//     fetch(`http://localhost:8080/tarefas/${id}`, {
-//         method: 'GET',
-//         headers: {
-//             'Authorization': `Bearer ${localStorage.getItem('token')}`
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(tarefa => {
-//         document.getElementById('tarefaNomeEditar').value = tarefa.nome;
-//         document.getElementById('tarefaDescricaoEditar').value = tarefa.descricao;
-//         document.getElementById('dataFinalEditar').value = tarefa.dataFinal;
-//         document.getElementById('formEditarTarefa').setAttribute('data-id', tarefa.idString);
-//     })
-//     .catch(error => {
-//         console.error('Erro ao buscar tarefa:', error);
-//         alert('Erro ao carregar tarefa para edição.');
-//     });
-// }
+    // Buscar a tarefa pelo ID e preencher o modal com os dados dela
+    fetch(`http://localhost:8080/tarefas/${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    .then(response => response.json())
+    .then(tarefa => {
+        document.getElementById('tarefaNomeEditar').value = tarefa.nome;
+        document.getElementById('tarefaDescricaoEditar').value = tarefa.descricao;
+        document.getElementById('dataFinalEditar').value = tarefa.dataFinal;
+        document.getElementById('formEditarTarefa').setAttribute('data-id', tarefa.idString);
+    })
+    .catch(error => {
+        console.error('Erro ao buscar tarefa:', error);
+        alert('Erro ao carregar tarefa para edição.');
+    });
+}
 
-// // Fechar o modal de edição
-// document.getElementById('closeModalEditar').onclick = function () {
-//     document.getElementById('modalEditarTarefa').style.display = 'none';
-// }
+// Fechar o modal de edição
+document.getElementById('closeModalEditar').onclick = function () {
+    document.getElementById('modalEditarTarefa').style.display = 'none';
+}
 
 
 // Chama a função de inicialização quando a página é carregada

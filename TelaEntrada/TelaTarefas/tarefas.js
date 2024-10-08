@@ -144,7 +144,6 @@ function mostrarTarefas(tarefas) {
     });
 }
 
-
 async function apagarTarefa(id) {
     const token = localStorage.getItem('token');
 
@@ -244,6 +243,37 @@ function editarTarefa(id) {
 document.getElementById('closeModalEditar').onclick = () => {
     document.getElementById('modalEditarTarefa').style.display = 'none';
 };
+        
 
 
-inicializar();
+async function atualizarStatus(id, concluida) {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert("Usuário não autenticado. Por favor, faça login.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:8080/tarefas/${id}/status?concluida=${concluida}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            alert('Status da tarefa atualizado com sucesso!');
+            buscarTarefasPorEmail(); // Atualize a lista de tarefas
+        } else {
+            alert('Erro ao atualizar o status da tarefa.');
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar status:', error);
+        alert('Erro ao conectar com o servidor.');
+    }
+}
+
+
+    inicializar();

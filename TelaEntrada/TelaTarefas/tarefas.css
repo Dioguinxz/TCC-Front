@@ -12,7 +12,7 @@
 
 body {
     margin: 0;
-     font-family: 'Codec', Arial, sans-serif;
+    font-family: 'Codec', Arial, sans-serif;
     background-color: #f8f9fd;
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@ header {
 
 .dropdown-menu {
 
-    
+
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -104,7 +104,7 @@ header {
 .dropdown-menu a:hover {
     transition: 0.3s ease-in-out;
     background-color: #f1f1f1;
-} 
+}
 
 
 .dropdown:hover .dropdown-menu {
@@ -112,27 +112,28 @@ header {
 }
 
 .dropdown-menu a svg {
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
 .dropdown-menu svg {
     fill: #4a4a4a;
 }
+
 .icon-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50%; 
-    background-color: #f0f0f0; 
-    margin-right: 18px; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    margin-right: 18px;
 }
 
 .dropdown-menu a {
     display: flex;
-    align-items: center; 
-    padding: 8px 16px; 
+    align-items: center;
+    padding: 8px 16px;
 }
 
 
@@ -183,38 +184,38 @@ header {
     margin-left: 20px;
 }
 
-.card-tarefa{
+.card-tarefa {
     position: relative;
     margin-top: 75px;
-    
+
     width: 80%;
     height: 32%;
     border-radius: 20px;
-   
+
 }
 
 .card-tarefa {
     font-family: 'Codec';
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 28px; 
+    gap: 28px;
 }
 
 .tarefa-item {
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
     border: 1px solid #ccc;
-    border-radius: 8px; 
-    padding: 15px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tarefa-card {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .tarefa-card h4 {
-    margin: 0; 
-    font-size: 1.2em; 
+    margin: 0;
+    font-size: 1.2em;
 }
 
 .tarefa-card p {
@@ -238,12 +239,12 @@ button {
 }
 
 
-.btn-apagar-tarefa:hover{
+.btn-apagar-tarefa:hover {
     background-color: #ff1a1a;
 
 }
 
-.btn-apagar-tarefa:active{
+.btn-apagar-tarefa:active {
     background-color: #cc0000;
 
 }
@@ -260,12 +261,12 @@ button {
 }
 
 
-.btn-editar-tarefa:hover{
+.btn-editar-tarefa:hover {
     background-color: #7B9BFF;
 
 }
 
-.btn-editar-tarefa:active{
+.btn-editar-tarefa:active {
     background-color: #7B9BFF;
 
 }
@@ -291,12 +292,12 @@ button {
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.custom-checkbox:checked + .checkmark {
+.custom-checkbox:checked+.checkmark {
     background-color: #8D9EFF;
     border-color: #5E7CFF;
 }
 
-.custom-checkbox:checked + .checkmark::after {
+.custom-checkbox:checked+.checkmark::after {
     content: '';
     position: absolute;
     left: 6px;
@@ -322,10 +323,65 @@ button {
 }
 
 .tarefa-concluida {
-    opacity: 0.5; /* Deixa o card mais opaco */
-    background-color: #f0f0f0; /* Opcional: muda a cor de fundo */
+    opacity: 0.5;
+    background-color: #f0f0f0;
 }
 
+/* Tarefa comum */
+.tarefa-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tarefa-concluida {
+    opacity: 0.6;
+    background-color: #e6e6e6;
+    text-decoration: line-through;
+    color: #999;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.tarefa-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.checkbox-container input[type="checkbox"]:checked+.checkmark {
+    background-color: #8D9EFF;
+}
+
+.btn-editar-tarefa,
+.btn-apagar-tarefa {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar-tarefa {
+    background-color: #8D9EFF;
+    color: white;
+}
+
+.btn-editar-tarefa:hover {
+    background-color: #6b7ecf;
+}
+
+.btn-apagar-tarefa {
+    background-color: #FF6B6B;
+    color: white;
+}
+
+.btn-apagar-tarefa:hover {
+    background-color: #e05656;
+}
 
 
 
@@ -337,12 +393,12 @@ button {
     background-color: #8D9EFF;
     height: 50px;
     width: 50px;
-    border-radius: 50%; 
+    border-radius: 50%;
     border: none;
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    transition: background-color 0.3s, box-shadow 0.3s; 
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -403,7 +459,8 @@ form label {
     margin-top: 10px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;

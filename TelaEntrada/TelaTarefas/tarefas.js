@@ -1,17 +1,10 @@
-// Suas funções de inicialização
+// Funções de inicialização
 function inicializar() {
     verificarAutenticacao();
-    atualizarBoasVindas();
     buscarTarefasPorEmail();
 }
 
 // Funções auxiliares
-function atualizarBoasVindas() {
-    const nomeUsuario = localStorage.getItem('nomeUsuario');
-    const boasVindasElement = document.getElementById('boasVindas');
-    boasVindasElement.textContent = nomeUsuario ? `Olá, ${nomeUsuario}` : 'Olá, visitante';
-}
-
 function verificarAutenticacao() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -19,6 +12,12 @@ function verificarAutenticacao() {
     } else {
         atualizarBoasVindas();
     }
+}
+
+function atualizarBoasVindas() {
+    const nomeUsuario = localStorage.getItem('nomeUsuario');
+    const boasVindasElement = document.getElementById('boasVindas');
+    boasVindasElement.textContent = nomeUsuario ? `Olá, ${nomeUsuario}` : 'Olá, visitante';
 }
 
 // Função de logout
@@ -29,44 +28,44 @@ function logoutHandler() {
     window.location.href = '/TelaEntrada/telaEntrada.html';
 }
 
-// Modal e Manipulação de Tarefas
+// Modal e manipulação de tarefas
 const modal = document.getElementById("modalCadastrarTarefa");
 const btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
 const spanCloseModal = document.getElementById("closeModal");
 
-// Abre o modal
-btnCadastrarTarefa.onclick = function () {
+// Manipula a abertura do modal
+btnCadastrarTarefa.onclick = () => abrirModal(modal);
+
+// Manipula o fechamento do modal
+spanCloseModal.onclick = () => fecharModal(modal);
+
+// Fecha o modal se clicar fora dele
+window.onclick = (event) => {
+    if (event.target === modal) {
+        fecharModal(modal);
+    }
+};
+
+// Função para abrir o modal
+function abrirModal(modal) {
     modal.style.display = "block";
 }
 
-// Fecha o modal
-spanCloseModal.onclick = function () {
+// Função para fechar o modal
+function fecharModal(modal) {
     modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
 }
 
 // Captura o evento de submit do formulário para cadastrar tarefa
 document.getElementById("formCadastrarTarefa").onsubmit = async function (event) {
     event.preventDefault();
-    
-    const tarefaNome = document.getElementById("tarefaNome").value;
-    const tarefaDescricao = document.getElementById("tarefaDescricao").value;
-    const dataFinal = document.getElementById("dataFinal").value;
-
-    const token = localStorage.getItem('token');
-    const emailUsuario = localStorage.getItem('emailUsuario');
 
     const tarefa = {
-        nome: tarefaNome,
-        descricao: tarefaDescricao,
-        dataFinal: dataFinal,
+        nome: document.getElementById("tarefaNome").value,
+        descricao: document.getElementById("tarefaDescricao").value,
+        dataFinal: document.getElementById("dataFinal").value,
         concluida: false,
-        emailUsuario: emailUsuario
+        emailUsuario: localStorage.getItem('emailUsuario')
     };
 
     try {
@@ -74,14 +73,14 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(tarefa)
         });
 
         if (response.ok) {
             alert('Tarefa cadastrada com sucesso!');
-            modal.style.display = "none";
+            fecharModal(modal);
             document.getElementById("formCadastrarTarefa").reset();
             buscarTarefasPorEmail();
         } else {
@@ -128,7 +127,6 @@ function mostrarTarefas(tarefas) {
     cardTarefa.innerHTML = '';
 
     tarefas.forEach(tarefa => {
-        console.log(`ID da tarefa: ${tarefa.idString}`);
         const tarefaElement = document.createElement('div');
         tarefaElement.className = 'tarefa-item';
         tarefaElement.innerHTML = `
@@ -171,31 +169,28 @@ async function apagarTarefa(id) {
             alert('Tarefa apagada com sucesso!');
             buscarTarefasPorEmail();
         } else {
-            alert('Erro ao apagar tarefa. Verifique se a tarefa existe.');
+            alert('Erro ao apagar tarefa.');
         }
     } catch (error) {
         console.error('Erro:', error);
         alert('Erro ao conectar com o servidor.');
     }
 }
+
 document.getElementById("formEditarTarefa").onsubmit = async function (event) {
     event.preventDefault();
 
-    const tarefaNome = document.getElementById("tarefaNomeEditar").value;
-    const tarefaDescricao = document.getElementById("tarefaDescricaoEditar").value;
-    const dataFinal = document.getElementById("dataFinalEditar").value;
-    const tarefaId = document.getElementById("formEditarTarefa").getAttribute('data-id', tarefa.idString);
-
-    const token = localStorage.getItem('token');
-    const emailUsuario = localStorage.getItem('emailUsuario');
+    const tarefaId = document.getElementById("formEditarTarefa").getAttribute('data-id');
 
     const tarefaAtualizada = {
-        nome: tarefaNome,
-        descricao: tarefaDescricao,
-        dataFinal: dataFinal,
-        concluida: false, 
-        emailUsuario: emailUsuario
+        nome: document.getElementById("tarefaNomeEditar").value,
+        descricao: document.getElementById("tarefaDescricaoEditar").value,
+        dataFinal: document.getElementById("dataFinalEditar").value,
+        concluida: false,
+        emailUsuario: localStorage.getItem('emailUsuario')
     };
+
+    const token = localStorage.getItem('token');
 
     try {
         const response = await fetch(`http://localhost:8080/tarefas/${tarefaId}`, {
@@ -209,13 +204,13 @@ document.getElementById("formEditarTarefa").onsubmit = async function (event) {
 
         if (response.ok) {
             alert('Tarefa editada com sucesso!');
-            document.getElementById("modalEditarTarefa").style.display = "none";
+            document.getElementById('modalEditarTarefa').style.display = 'none';
             buscarTarefasPorEmail();
         } else {
             alert('Erro ao editar tarefa.');
         }
     } catch (error) {
-        console.error('Erro ao conectar com o servidor:', error);
+        console.error('Erro ao editar tarefa:', error);
         alert('Erro ao conectar com o servidor.');
     }
 };
@@ -225,31 +220,33 @@ function editarTarefa(id) {
     const modalEditar = document.getElementById('modalEditarTarefa');
     modalEditar.style.display = 'block';
 
-    // Buscar a tarefa pelo ID e preencher o modal com os dados dela
-    fetch(`http://localhost:8080/tarefas/${id}`, {
+    fetch(`http://localhost:8080/tarefas/buscarPorId/${id}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     })
-    .then(response => response.json())
-    .then(tarefa => {
-        document.getElementById('tarefaNomeEditar').value = tarefa.nome;
-        document.getElementById('tarefaDescricaoEditar').value = tarefa.descricao;
-        document.getElementById('dataFinalEditar').value = tarefa.dataFinal;
-        document.getElementById('formEditarTarefa').setAttribute('data-id', tarefa.idString);
-    })
-    .catch(error => {
-        console.error('Erro ao buscar tarefa:', error);
-        alert('Erro ao carregar tarefa para edição.');
-    });
+        .then(async response => {
+            if (response.ok) {
+                const tarefa = await response.json();
+                document.getElementById('tarefaNomeEditar').value = tarefa.nome;
+                document.getElementById('tarefaDescricaoEditar').value = tarefa.descricao;
+                document.getElementById('dataFinalEditar').value = tarefa.dataFinal;
+                document.getElementById('formEditarTarefa').setAttribute('data-id', tarefa.idString);
+            } else {
+                throw new Error(`Erro ao buscar tarefa. Status: ${response.status}`);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao buscar tarefa:', error);
+            alert('Erro ao carregar tarefa para edição.');
+        });
 }
 
 // Fechar o modal de edição
-document.getElementById('closeModalEditar').onclick = function () {
+document.getElementById('closeModalEditar').onclick = () => {
     document.getElementById('modalEditarTarefa').style.display = 'none';
-}
+};
 
-
-// Chama a função de inicialização quando a página é carregada
-window.onload = inicializar;
+// Inicializa a página
+inicializar();

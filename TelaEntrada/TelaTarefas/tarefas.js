@@ -123,9 +123,17 @@ function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
     cardTarefa.innerHTML = '';
 
+    tarefas.sort((a, b) => a.concluida - b.concluida);
+
     tarefas.forEach(tarefa => {
         const tarefaElement = document.createElement('div');
         tarefaElement.className = 'tarefa-item';
+        
+        
+        if (tarefa.concluida) {
+            tarefaElement.classList.add('tarefa-concluida');
+        }
+
         tarefaElement.innerHTML = `
             <h2>${tarefa.nome}</h2>
             <p><span class="bold">Descrição:</span> ${tarefa.descricao}</p>
@@ -140,9 +148,11 @@ function mostrarTarefas(tarefas) {
             <button class="btn-editar-tarefa" onclick="editarTarefa('${tarefa.idString}')">Editar</button>
             <button class="btn-apagar-tarefa" onclick="apagarTarefa('${tarefa.idString}')">Apagar</button>
         `;
+
         cardTarefa.appendChild(tarefaElement);
     });
 }
+
 
 async function apagarTarefa(id) {
     const token = localStorage.getItem('token');
@@ -265,7 +275,7 @@ async function atualizarStatus(id, concluida) {
 
         if (response.ok) {
             alert('Status da tarefa atualizado com sucesso!');
-            buscarTarefasPorEmail(); // Atualize a lista de tarefas
+            buscarTarefasPorEmail();
         } else {
             alert('Erro ao atualizar o status da tarefa.');
         }

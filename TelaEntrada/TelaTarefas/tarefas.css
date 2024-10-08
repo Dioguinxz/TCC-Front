@@ -321,6 +321,12 @@ button {
 
 }
 
+.tarefa-concluida {
+    opacity: 0.5; /* Deixa o card mais opaco */
+    background-color: #f0f0f0; /* Opcional: muda a cor de fundo */
+}
+
+
 
 
 .btnCadastrarTarefa {

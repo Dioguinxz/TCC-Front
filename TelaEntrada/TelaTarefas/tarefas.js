@@ -274,7 +274,6 @@ async function atualizarStatus(id, concluida) {
         });
 
         if (response.ok) {
-            alert('Status da tarefa atualizado com sucesso!');
             buscarTarefasPorEmail();
         } else {
             alert('Erro ao atualizar o status da tarefa.');

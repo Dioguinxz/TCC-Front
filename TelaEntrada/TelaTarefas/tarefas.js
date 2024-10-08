@@ -118,26 +118,27 @@ async function buscarTarefasPorEmail() {
     }
 }
 
-
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
     cardTarefa.innerHTML = '';
+
 
     tarefas.sort((a, b) => a.concluida - b.concluida);
 
     tarefas.forEach(tarefa => {
         const tarefaElement = document.createElement('div');
         tarefaElement.className = 'tarefa-item';
-        
-        
+
         if (tarefa.concluida) {
             tarefaElement.classList.add('tarefa-concluida');
         }
 
+        const dataFinalComSpan = tarefa.dataFinal.replace(/(\d+)/g, '<span class="data-numeros">$1</span>');
+
         tarefaElement.innerHTML = `
             <h2>${tarefa.nome}</h2>
             <p><span class="bold">Descrição:</span> ${tarefa.descricao}</p>
-            <p><span class="bold">Data Final:</span> ${tarefa.dataFinal}</p>
+            <p><span class="bold">Data Final:</span> ${dataFinalComSpan}</p>
             <div class="pendentes">
                 <p><span class="bold">Status:</span> ${tarefa.concluida ? 'Concluída' : 'Pendente'}</p>
                 <label class="checkbox-container">
@@ -152,6 +153,7 @@ function mostrarTarefas(tarefas) {
         cardTarefa.appendChild(tarefaElement);
     });
 }
+
 
 
 async function apagarTarefa(id) {

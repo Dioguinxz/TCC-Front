@@ -22,7 +22,7 @@ async function buscarUsuarioPorEmail() {
     return await response.json();
 }
 
-// Função para preencher o formulário com os dados do usuário
+
 async function preencherFormulario() {
     try {
         const usuario = await buscarUsuarioPorEmail();
@@ -34,10 +34,9 @@ async function preencherFormulario() {
     }
 }
 
-// Chama a função para preencher o formulário quando a página carrega
+
 window.onload = preencherFormulario;
 
-// Função para editar o usuário
 async function editarUsuarioHandler() {
     const nome = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -51,7 +50,7 @@ async function editarUsuarioHandler() {
 
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`http://localhost:8080/usuario/${email}`, { // Usando o email para a edição
+        const response = await fetch(`http://localhost:8080/usuario/${email}`, { 
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,23 +65,22 @@ async function editarUsuarioHandler() {
         }
 
         alert("Usuário atualizado com sucesso!");
-        localStorage.setItem("emailUsuario", usuarioAtualizado.email); // Atualiza o email
+        localStorage.setItem("emailUsuario", usuarioAtualizado.email);
         localStorage.setItem("nomeUsuario", usuarioAtualizado.nome);
-        window.location.href = "/TelaEntrada/TelaTarefas/tarefas.html"; // Redirecionar para a tela de tarefas
+        window.location.href = "/TelaEntrada/TelaTarefas/tarefas.html";
     } catch (error) {
         console.error(error.message);
         alert("Erro ao editar usuário: " + error.message);
     }
 }
 
-// Adiciona um listener ao botão de edição
+
 document.getElementById("editarButton").addEventListener("click", editarUsuarioHandler);
 
 
 async function excluirUsuario() {
-    const emailDoUsuario = localStorage.getItem("emailUsuario"); // Recupera o email do localStorage
-    const token = localStorage.getItem("token"); // Recupera o token do localStorage
-
+    const emailDoUsuario = localStorage.getItem("emailUsuario"); 
+    const token = localStorage.getItem("token"); 
     if (!emailDoUsuario) {
         alert("Email do usuário não encontrado.");
         return;
@@ -106,9 +104,9 @@ async function excluirUsuario() {
             }
 
             alert("Usuário excluído com sucesso!");
-            localStorage.removeItem("emailUsuario"); // Remove o email do localStorage
-            localStorage.removeItem("token"); // Remove o token do localStorage
-            window.location.href = "/TelaEntrada/telaEntrada.html"; // Redireciona para a tela de entrada
+            localStorage.removeItem("emailUsuario"); 
+            localStorage.removeItem("token"); 
+            window.location.href = "/TelaEntrada/telaEntrada.html"; 
 
         } catch (error) {
             console.error(error.message);

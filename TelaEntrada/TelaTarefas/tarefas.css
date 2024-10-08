@@ -9,10 +9,10 @@
     font-weight: bold;
 }
 
-/* Estilos para o corpo */
+
 body {
     margin: 0;
-    font-family: 'Codec';
+     font-family: 'Codec', Arial, sans-serif;
     background-color: #f8f9fd;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,6 @@ body {
     color: #4a4a4a;
 }
 
-/* Estilos para o cabeçalho */
 header {
     position: fixed;
     top: 0;
@@ -52,7 +51,7 @@ header {
     filter: brightness(0) saturate(100%) invert(9%) sepia(0%) saturate(0%) hue-rotate(359deg) brightness(100%) contrast(102%);
 }
 
-/* Estilos para o botão de perfil */
+
 .btn-profile {
     border: none;
     background-color: transparent;
@@ -71,7 +70,7 @@ header {
     transform: scale(1.05);
 }
 
-/* Estilos para o dropdown */
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -105,9 +104,9 @@ header {
 .dropdown-menu a:hover {
     transition: 0.3s ease-in-out;
     background-color: #f1f1f1;
-}
+} 
 
-/* Exibir dropdown ao passar o mouse */
+
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -131,7 +130,6 @@ header {
 }
 
 .dropdown-menu a {
-    /* gap: 15px; */
     display: flex;
     align-items: center; 
     padding: 8px 16px; 
@@ -145,7 +143,6 @@ header {
     top: 70px;
     left: 0;
     width: 130px;
-    /* border: 2px solid black; */
     background-color: #8D9EFF;
     height: 100%;
     padding: 20px;
@@ -176,11 +173,11 @@ header {
     margin-top: 110px;
     height: 80%;
     width: 80%;
-    /* border: 1px solid black; */
+
 }
 
 .boasVindas {
-    /* border: 1px solid black; */
+
     font-size: 40px;
     position: absolute;
     margin-left: 20px;
@@ -189,66 +186,57 @@ header {
 .card-tarefa{
     position: relative;
     margin-top: 75px;
-    /* background-color: #8D9EFF; */
+    
     width: 80%;
     height: 32%;
     border-radius: 20px;
-    /* border: 2px solid black; */
+   
 }
 
 .card-tarefa {
     font-family: 'Codec';
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas que se ajustam ao tamanho do card */
-    gap: 28px; /* Espaço entre os cards */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px; 
 }
 
 .tarefa-item {
-    background-color: #f9f9f9; /* Cor de fundo do card */
-    border: 1px solid #ccc; /* Borda do card */
-    border-radius: 8px; /* Bordas arredondadas */
-    padding: 15px; /* Espaçamento interno do card */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do card */
+    background-color: #f9f9f9; 
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    padding: 15px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .tarefa-card {
-    margin-bottom: 10px; /* Espaço abaixo do card */
+    margin-bottom: 10px; 
 }
 
 .tarefa-card h4 {
-    margin: 0; /* Remove a margem do título */
-    font-size: 1.2em; /* Tamanho do título */
+    margin: 0; 
+    font-size: 1.2em; 
 }
 
 .tarefa-card p {
-    margin: 5px 0; /* Margem entre os parágrafos */
+    margin: 5px 0;
 }
-
-/* .card-tarefa button {
-    height: 30px;
-    width: 60px;
-    border-radius: 5px;
-    border: none;
-} */
-
 
 button {
     font-family: 'Codec';
 }
 
 .btn-apagar-tarefa {
-    background-color: #ff4d4d; /* Vermelho claro para indicar alerta */
-    color: white;              /* Texto em branco para contraste */
-    border: none;              /* Sem borda */
-    border-radius: 4px;       /* Bordas arredondadas */
-    padding: 8px 10px;        /* Espaçamento interno reduzido */
-    font-size: 14px;          /* Tamanho da fonte reduzido */
-    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
-    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     margin-left: 5px;
-     
-
 }
+
 
 .btn-apagar-tarefa:hover{
     background-color: #ff1a1a;
@@ -261,16 +249,16 @@ button {
 }
 
 .btn-editar-tarefa {
-    background-color: #8D9EFF; /* Azul claro */
-    color: white;              /* Texto em branco para contraste */
-    border: none;              /* Sem borda */
-    border-radius: 4px;       /* Bordas arredondadas */
-    padding: 8px 10px;        /* Espaçamento interno */
-    font-size: 14px;          /* Tamanho da fonte */
-    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
-    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
-
+    background-color: #8D9EFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
 
 .btn-editar-tarefa:hover{
     background-color: #7B9BFF;
@@ -283,41 +271,41 @@ button {
 }
 
 .checkbox-container {
-    display: flex;              /* Flexbox para alinhar o checkbox e o texto */
-    align-items: center;       /* Centraliza verticalmente */
-    cursor: pointer;           /* Muda o cursor para indicar que é clicável */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .custom-checkbox {
-    display: none;             /* Esconde o checkbox padrão */
+    display: none;
 }
 
 .checkmark {
-    width: 20px;              /* Largura do checkmark */
-    height: 20px;             /* Altura do checkmark */
-    border: 2px solid #8D9EFF; /* Borda azul clara */
-    border-radius: 4px;       /* Bordas arredondadas */
-    background-color: white;  /* Cor de fundo padrão */
-    position: relative;        /* Para posicionamento do check */
-    margin-right: 10px;       /* Espaçamento entre o checkbox e o texto */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #8D9EFF;
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .custom-checkbox:checked + .checkmark {
-    background-color: #8D9EFF; /* Azul claro quando marcado */
-    border-color: #5E7CFF;     /* Borda azul mais escura quando marcado */
+    background-color: #8D9EFF;
+    border-color: #5E7CFF;
 }
 
 .custom-checkbox:checked + .checkmark::after {
-    content: '';               /* Adiciona um pseudo-elemento */
-    position: absolute;        /* Posiciona o checkmark dentro do check */
-    left: 6px;                /* Ajuste da posição do check */
-    top: 2px;                 /* Ajuste da posição do check */
-    width: 6px;               /* Largura do check */
-    height: 12px;             /* Altura do check */
-    border: solid white;      /* Cor do check */
-    border-width: 0 2px 2px 0; /* Apenas o lado direito e inferior */
-    transform: rotate(45deg); /* Rotaciona para parecer um check */
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 .bold {

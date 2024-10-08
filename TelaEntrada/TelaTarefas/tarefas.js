@@ -1,10 +1,10 @@
-// Funções de inicialização
+
 function inicializar() {
     verificarAutenticacao();
     buscarTarefasPorEmail();
 }
 
-// Funções auxiliares
+
 function verificarAutenticacao() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -20,7 +20,6 @@ function atualizarBoasVindas() {
     boasVindasElement.textContent = nomeUsuario ? `Olá, ${nomeUsuario}` : 'Olá, visitante';
 }
 
-// Função de logout
 function logoutHandler() {
     localStorage.removeItem('token');
     localStorage.removeItem('nomeUsuario');
@@ -28,35 +27,33 @@ function logoutHandler() {
     window.location.href = '/TelaEntrada/telaEntrada.html';
 }
 
-// Modal e manipulação de tarefas
+
 const modal = document.getElementById("modalCadastrarTarefa");
 const btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
 const spanCloseModal = document.getElementById("closeModal");
 
-// Manipula a abertura do modal
-btnCadastrarTarefa.onclick = () => abrirModal(modal);
 
-// Manipula o fechamento do modal
+btnCadastrarTarefa.onclick = () => abrirModal(modal);
 spanCloseModal.onclick = () => fecharModal(modal);
 
-// Fecha o modal se clicar fora dele
+
 window.onclick = (event) => {
     if (event.target === modal) {
         fecharModal(modal);
     }
 };
 
-// Função para abrir o modal
+
 function abrirModal(modal) {
     modal.style.display = "block";
 }
 
-// Função para fechar o modal
+
 function fecharModal(modal) {
     modal.style.display = "none";
 }
 
-// Captura o evento de submit do formulário para cadastrar tarefa
+
 document.getElementById("formCadastrarTarefa").onsubmit = async function (event) {
     event.preventDefault();
 
@@ -92,7 +89,7 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
     }
 };
 
-// Função para buscar tarefas por email
+
 async function buscarTarefasPorEmail() {
     const token = localStorage.getItem('token');
     const emailUsuario = localStorage.getItem('emailUsuario');
@@ -121,7 +118,7 @@ async function buscarTarefasPorEmail() {
     }
 }
 
-// Função para mostrar tarefas
+
 function mostrarTarefas(tarefas) {
     const cardTarefa = document.querySelector('.card-tarefa');
     cardTarefa.innerHTML = '';
@@ -147,7 +144,7 @@ function mostrarTarefas(tarefas) {
     });
 }
 
-// Função para apagar a tarefa
+
 async function apagarTarefa(id) {
     const token = localStorage.getItem('token');
 
@@ -215,7 +212,7 @@ document.getElementById("formEditarTarefa").onsubmit = async function (event) {
     }
 };
 
-// Função para abrir o modal de edição de tarefa e preencher os campos com os dados da tarefa
+
 function editarTarefa(id) {
     const modalEditar = document.getElementById('modalEditarTarefa');
     modalEditar.style.display = 'block';
@@ -243,10 +240,10 @@ function editarTarefa(id) {
         });
 }
 
-// Fechar o modal de edição
+
 document.getElementById('closeModalEditar').onclick = () => {
     document.getElementById('modalEditarTarefa').style.display = 'none';
 };
 
-// Inicializa a página
+
 inicializar();

@@ -123,8 +123,8 @@ header {
 
 form {
     display: flex;
-    flex-direction: column; /* Centraliza os elementos dentro do formulário */
-    align-items: center; /* Centraliza os elementos horizontalmente */
+    flex-direction: column; 
+    align-items: center; 
     width: 400px;
     position: relative;
     bottom: 37px;

@@ -122,7 +122,7 @@ form {
     width: 400px;
     position: relative;
     bottom: 30px;
-    text-align: center; /* Centraliza o conteúdo dentro do form */
+    text-align: center; 
 }
 .input-single {
     /* border: 1px solid black; */
@@ -168,22 +168,6 @@ form {
     color: #333333;
 }
 
-/* .forgot-password {
-     border: 1px solid; 
-    position: relative;
-    left:151px;
-    bottom: 42px;
-    color:#8D9EFF;
-    font-size: 13px;   
-    cursor: pointer;    
-    transition: 0.2s ease-in-out;
-}
-
-.forgot-password:hover{
-    color: #333333;
-    transition: 0.2s ease-in-out;
-
-} */
 
 .right-container button {
     font-family: 'Codec';

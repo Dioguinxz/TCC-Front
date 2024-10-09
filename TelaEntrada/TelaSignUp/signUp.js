@@ -12,15 +12,11 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(usuario)
                 });
-
-                console.log('Resposta do servidor:', response);
-
                 if (response.ok) {
                     const data = await response.json();
                     localStorage.setItem('nomeUsuario', nome);
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('emailUsuario', email);
-                    alert('Conta criada com sucesso!');
                     window.location.href = '/TelaEntrada/TelaTarefas/tarefas.html';
 
                 } else if (response.status === 409) {

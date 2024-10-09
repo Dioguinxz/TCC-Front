@@ -76,7 +76,6 @@ document.getElementById("formCadastrarTarefa").onsubmit = async function (event)
         });
 
         if (response.ok) {
-            alert('Tarefa cadastrada com sucesso!');
             fecharModal(modal);
             document.getElementById("formCadastrarTarefa").reset();
             buscarTarefasPorEmail();
@@ -174,7 +173,6 @@ async function apagarTarefa(id) {
         });
 
         if (response.ok) {
-            alert('Tarefa apagada com sucesso!');
             buscarTarefasPorEmail();
         } else {
             alert('Erro ao apagar tarefa.');
@@ -211,7 +209,6 @@ document.getElementById("formEditarTarefa").onsubmit = async function (event) {
         });
 
         if (response.ok) {
-            alert('Tarefa editada com sucesso!');
             document.getElementById('modalEditarTarefa').style.display = 'none';
             buscarTarefasPorEmail();
         } else {

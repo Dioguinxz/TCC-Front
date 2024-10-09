@@ -337,6 +337,12 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
+.tarefa-item p {
+    word-wrap: break-word; 
+    max-height: 100px;  
+    overflow-y: auto;   
+    margin: 5px 0;
+}
 
 .tarefa-concluida {
     opacity: 0.6;

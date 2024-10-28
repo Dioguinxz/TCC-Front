@@ -25,7 +25,7 @@ Esta aplicação é um assistente de tarefas pessoal voltado para todos os tipos
 2. Clone o repositório `TCC-FRONT`
 3. No projeto backend, execute a classe `Tcc2Application`
 4. No projeto frontend, instale a extensão **Live Server** no Visual Studio Code para uma melhor experiência
-5. Após instalar a extensão, abra o arquivo `telaEntrada.html` e clique em **Go Live** no canto inferior direito da tela. A página será carregada, e o software estará pronto para uso
+5. Após instalar a extensão, abra o arquivo `telaEntrada.html` e clique em **Go Live** no canto inferior direito da tela. A página será carregada, e a aplicação estará pronta para uso.
 
 ## Tecnologias Utilizadas
 
